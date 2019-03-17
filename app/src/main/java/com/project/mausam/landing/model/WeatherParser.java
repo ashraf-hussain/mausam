@@ -52,7 +52,7 @@ public class WeatherParser {
 
                 JSONObject mainobj = weather.getJSONObject(imain);
 
-                weatherModel.setMain(mainobj.getString("main"));
+                weatherModel.setMain(mainobj.getString("description"));
                 Log.d("main: ", String.valueOf(mainobj.getString("main")));
 
             }

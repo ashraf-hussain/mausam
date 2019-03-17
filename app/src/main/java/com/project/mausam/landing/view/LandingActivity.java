@@ -5,6 +5,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,9 @@ import com.project.mausam.landing.model.WeatherModel;
 import com.project.mausam.landing.presenter.LandingImp;
 import com.project.mausam.landing.presenter.LandingPresenter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -50,9 +54,54 @@ public class LandingActivity extends BaseActivity
 
     @Override
     protected void init() {
-        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(this,
-                LinearLayoutManager.HORIZONTAL, false);
-        rvWeatherForecast.setLayoutManager(horizontalLayoutManager);
+
+
+        final String time = "2019-03-18 09:00:00";
+//
+//        try {
+//            final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+//            final Date dateObj = sdf.parse(time);
+//            System.out.println(dateObj);
+//            System.out.println(new SimpleDateFormat("K:mm").format(dateObj));
+//        } catch (final ParseException e) {
+//            e.printStackTrace();
+//        }
+
+
+        //Current date
+//        Date d=new Date();
+//
+//        SimpleDateFormat sdf=new SimpleDateFormat("hh:mm a");
+//
+//        String currentDateTimeString = sdf.format(d);
+//            System.out.println(currentDateTimeString);
+
+
+            String inputPattern = "yyyy-MM-dd HH:mm:ss";
+            String outputPattern = "h:mm a";
+            SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+            SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+            Date date = null;
+            String str = null;
+
+            try {
+                date = inputFormat.parse(time);
+                str = outputFormat.format(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+                    System.out.println(str);
+
+
+
+
+
+
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 4);
+        rvWeatherForecast.setLayoutManager(layoutManager);
         rvWeatherForecast.setHasFixedSize(true);
 
 
