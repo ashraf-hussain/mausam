@@ -14,6 +14,9 @@ import com.project.mausam.R;
 import com.project.mausam.landing.model.WeatherModel;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -24,6 +27,12 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
     private List<WeatherModel> weatherModelList;
     private Context context;
+    Date date = null;
+    String str = null;
+    String inputPattern;
+    String outputPattern;
+    SimpleDateFormat in;
+    SimpleDateFormat out;
 
 
     public WeatherAdapter(List<WeatherModel> musicModelList) {
@@ -35,6 +44,13 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.adapter_forecast, parent, false);
         context = view.getContext();
+
+        //formatting as date and time
+        inputPattern = "yyyy-MM-dd HH:mm:ss";
+        outputPattern = "h:mm a";
+        in = new SimpleDateFormat(inputPattern);
+        out = new SimpleDateFormat(outputPattern);
+
         return new ViewHolder(view);
     }
 
@@ -42,12 +58,22 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final WeatherModel weatherModel = weatherModelList.get(position);
         try {
+                date = in.parse(weatherModel.getDtTxt());
+                str = out.format(date);
 
-
-            holder.tvForecastTime.setText(weatherModel.getDtTxt());
             holder.tvForecastTemp.setText(weatherModel.getTempKf()+" ");
-            holder.tvForecastAmPm.setText("Am");
-            //Picasso.get().load(context.getDrawable(R.drawable.ic_keyboard_backspace_black_24dp)).into(holder.ivForecastPic);
+            holder.tvForecastTime.setText(str);
+            if (weatherModel.getMain().equalsIgnoreCase("clear sky")) {
+                holder.ivForecastPic.setBackgroundResource(R.drawable.ic_warm);
+            } else if (weatherModel.getMain().equalsIgnoreCase("scattered clouds")) {
+                holder.ivForecastPic.setBackgroundResource(R.drawable.ic_partly_cloudy_blue);
+            }else if (weatherModel.getMain().equalsIgnoreCase("Rain")) {
+                holder.ivForecastPic.setBackgroundResource(R.drawable.ic_rain);
+            }else if (weatherModel.getMain().equalsIgnoreCase("broken clouds")) {
+                holder.ivForecastPic.setBackgroundResource(R.drawable.ic_partly_cloudy);
+            }else if (weatherModel.getMain().equalsIgnoreCase("few clouds")) {
+                holder.ivForecastPic.setBackgroundResource(R.drawable.ic_sun);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

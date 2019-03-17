@@ -7,7 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SetupRetrofit {
 
-    String BASE_URL = "https://samples.openweathermap.org/data/2.5/";
+    String BASE_URL = "https://api.openweathermap.org/data/2.5/";
+   // String BASE_URL = "https://samples.openweathermap.org/data/2.5/";
 
     public Retrofit getRetrofit() {
 
