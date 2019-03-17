@@ -15,6 +15,14 @@ public class WeatherModel {
     @Expose
     private String main;
 
+    @SerializedName("name")
+    @Expose
+    private String cityName;
+
+    @SerializedName("country")
+    @Expose
+    private String country;
+
     public String getDtTxt() {
         return dtTxt;
     }
@@ -37,6 +45,22 @@ public class WeatherModel {
 
     public void setMain(String main) {
         this.main = main;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 

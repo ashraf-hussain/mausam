@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_warm"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_warm"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -24,9 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity-->
-            <!--android:name=".landing.view.LandingActivity"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <activity android:name=".settings.SettingMenuActivity" />
+        <activity
+            android:name=".start.SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

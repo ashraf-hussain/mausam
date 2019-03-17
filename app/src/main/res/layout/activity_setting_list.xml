@@ -9,6 +9,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_zip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -41,6 +42,7 @@
         android:background="@color/colorView" />
 
     <LinearLayout
+        android:id="@+id/ll_unit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

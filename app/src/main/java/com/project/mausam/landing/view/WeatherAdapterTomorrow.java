@@ -2,7 +2,6 @@ package com.project.mausam.landing.view;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,13 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.project.mausam.R;
 import com.project.mausam.landing.model.WeatherModel;
-import com.squareup.picasso.Picasso;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
+public class WeatherAdapterTomorrow extends RecyclerView.Adapter<WeatherAdapterTomorrow.ViewHolder> {
 
 
     private List<WeatherModel> weatherModelList;
@@ -42,12 +38,12 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     SimpleDateFormat outDate;
 
 
-    public WeatherAdapter(List<WeatherModel> musicModelList) {
+    public WeatherAdapterTomorrow(List<WeatherModel> musicModelList) {
         this.weatherModelList = musicModelList;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WeatherAdapterTomorrow.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.adapter_forecast, parent, false);
         context = view.getContext();
@@ -62,11 +58,11 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
         outDate = new SimpleDateFormat(outputPatternDate);
 
-        return new ViewHolder(view);
+        return new WeatherAdapterTomorrow.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(final WeatherAdapterTomorrow.ViewHolder holder, final int position) {
         final WeatherModel weatherModel = weatherModelList.get(position);
         try {
             date = in.parse(weatherModel.getDtTxt());
@@ -76,8 +72,13 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
 
             if (LandingActivity.todaysDate.equals(strDate)) {
-                Log.d( "today",LandingActivity.todaysDate);
-                Log.d( "date",strDate);
+
+                holder.llForecast.setVisibility(View.GONE);
+                Log.d("tomo", "yes");
+
+            } else {
+                Log.d("tomo", "no");
+
                 holder.llForecast.setVisibility(View.VISIBLE);
 
                 holder.tvForecastTemp.setText(weatherModel.getTempKf() + " ");
@@ -105,11 +106,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
                     holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_sun);
                 }
-
-
-            }else {
-                holder.llForecast.setVisibility(View.GONE);
-                Log.d( "date","no");
             }
 
         } catch (Exception e) {
@@ -129,8 +125,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         TextView tvForecastTime;
         @BindView(R.id.tv_forecast_degree)
         TextView tvForecastDegree;
-        @BindView(R.id.tv_forecast_am_pm)
-        TextView tvForecastAmPm;
         @BindView(R.id.iv_forecast_pic)
         ImageView ivForecastPic;
         @BindView(R.id.tv_forecast_temp)
