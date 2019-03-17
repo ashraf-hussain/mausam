@@ -40,13 +40,19 @@ public class LandingImp implements LandingPresenter {
         sharedPreferences = context.getSharedPreferences(SettingsActivity.MY_DATA, MODE_PRIVATE);
 
         String zipCodeDataCheck = sharedPreferences.getString(SettingsActivity.zip, "");
+        String unitCheck = sharedPreferences.getString(SettingsActivity.unit, "imperial");
+        Log.d( "unit", unitCheck);
 
         SetupRetrofit setupRetrofit = new SetupRetrofit();
         Retrofit retrofit = setupRetrofit.getRetrofit();
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
-        weatherApi.getLandingData(zipCodeDataCheck, AppConstant.API_KEY).enqueue(new Callback<ResponseBody>() {
+
+
+        weatherApi.getLandingData(zipCodeDataCheck, AppConstant.API_KEY,unitCheck).enqueue(new Callback<ResponseBody>() {
+
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                 Log.d("onResponse: ", String.valueOf(response.code()));
                 try {
                     WeatherParser weatherParser = new WeatherParser(response.body().string());

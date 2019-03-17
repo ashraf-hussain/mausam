@@ -69,46 +69,6 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--android:text="@string/unit"-->
-                <!--android:textColor="@color/colorWhite"-->
-                <!--android:textSize="16sp"-->
-                <!--android:textStyle="bold" />-->
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center"-->
-                <!--android:orientation="horizontal">-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="@string/c"-->
-                    <!--android:textColor="@color/colorWhite"-->
-                    <!--android:textSize="14sp"-->
-                    <!--android:textStyle="bold" />-->
-
-                <!--<Switch-->
-                    <!--android:id="@+id/tb_unit"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:layout_marginStart="8dp"-->
-                    <!--android:layout_marginEnd="8dp" />-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="@string/f"-->
-                    <!--android:textColor="@color/colorWhite"-->
-                    <!--android:textSize="14sp"-->
-                    <!--android:textStyle="bold" />-->
-
-            <!--</LinearLayout>-->
 
             <Button
                 android:id="@+id/btn_save"
