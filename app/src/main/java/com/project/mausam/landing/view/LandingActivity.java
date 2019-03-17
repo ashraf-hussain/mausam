@@ -3,8 +3,11 @@ package com.project.mausam.landing.view;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,11 +16,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.mausam.R;
 import com.project.mausam.common.BaseActivity;
+import com.project.mausam.common.ConnectionDetector;
 import com.project.mausam.landing.model.WeatherModel;
 import com.project.mausam.landing.presenter.LandingImp;
 import com.project.mausam.landing.presenter.LandingPresenter;
@@ -48,10 +53,14 @@ public class LandingActivity extends BaseActivity
     TextView tvCurrentStatus;
     @BindView(R.id.rv_weatherForecast)
     RecyclerView rvWeatherForecast;
+    @BindView(R.id.pull_to_refresh)
+    SwipeRefreshLayout pullToRefresh;
     @BindView(R.id.rv_weatherForecastTomorrow)
     RecyclerView rvWeatherForecastTomorrow;
     public static String todaysDate;
     SharedPreferences settings;
+    ConnectionDetector connectionDetector;
+    LandingPresenter landingPresenter;
 
     @Override
     protected int getLayout() {
@@ -60,6 +69,7 @@ public class LandingActivity extends BaseActivity
 
     @Override
     protected void init() {
+        connectionDetector = new ConnectionDetector(this);
 
         settings = getSharedPreferences(SettingsActivity.MY_DATA, MODE_PRIVATE);
         String zipCodeDataCheck = settings.getString(SettingsActivity.zip, "");
@@ -87,11 +97,40 @@ public class LandingActivity extends BaseActivity
             rvWeatherForecastTomorrow.setLayoutManager(layoutManagerTomorrow);
             rvWeatherForecastTomorrow.setHasFixedSize(true);
 
-            LandingPresenter landingPresenter = new LandingImp(this, this);
+            landingPresenter = new LandingImp(this, this);
             landingPresenter.loadWeatherData();
+            pullToRefreshFunction();
+
+
         }
     }
 
+    private void pullToRefreshFunction() {
+
+        if (!connectionDetector.isConnected()) {
+
+            pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    snackBar("No Internet Connection !");
+                    //llPb.setVisibility(View.GONE);
+                    pullToRefresh.setRefreshing(false);
+                }
+            });
+
+        } else {
+            // Pull to refresh
+            pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    snackBar("Data Refreshed !");
+                    landingPresenter.loadWeatherData();
+                    // tvOfflineMode.setVisibility(View.GONE);
+                    pullToRefresh.setRefreshing(false);
+                }
+            });
+        }
+    }
 
     @Override
     public void showLandingData(List<WeatherModel> weatherModelsList) {
@@ -114,5 +153,22 @@ public class LandingActivity extends BaseActivity
     public void onViewClicked() {
         Intent intent = new Intent(this, SettingMenuActivity.class);
         startActivity(intent);
+    }
+
+
+    private void snackBar(String message) {
+        Snackbar snackbar = Snackbar
+                .make(pullToRefresh, message, Snackbar.LENGTH_SHORT);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBlack));
+        snackbar.show();
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        pullToRefreshFunction();
     }
 }

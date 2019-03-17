@@ -11,30 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56b97d7f-8f81-4440-b415-3d2169659360" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/WeatherAdapterTomorrow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/settings/SettingMenuActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/common/AppConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/common/AppConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/model/WeatherApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/model/WeatherApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/model/WeatherModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/model/WeatherModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/model/WeatherParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/model/WeatherParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/presenter/LandingImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/presenter/LandingImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/LandingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/LandingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/WeatherAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/WeatherAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/start/GetStartedActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/project/mausam/start/SettingsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_setting_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_setting_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/adapter_forecast.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_forecast.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +37,7 @@
     <session id="1901006453">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.9" value="1" />
@@ -66,7 +50,7 @@
           <entry key="gradle" value="2" />
           <entry key="java" value="45" />
           <entry key="png" value="1" />
-          <entry key="xml" value="64" />
+          <entry key="xml" value="65" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -75,56 +59,51 @@
           <entry key="Groovy" value="2" />
           <entry key="Image" value="1" />
           <entry key="JAVA" value="45" />
-          <entry key="XML" value="64" />
+          <entry key="XML" value="65" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="45" />
           <entry key="gradle" value="3" />
-          <entry key="java" value="4141" />
-          <entry key="xml" value="2380" />
+          <entry key="java" value="4370" />
+          <entry key="xml" value="2417" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="3" />
-          <entry key="JAVA" value="4141" />
+          <entry key="JAVA" value="4370" />
           <entry key="PLAIN_TEXT" value="45" />
-          <entry key="XML" value="2380" />
+          <entry key="XML" value="2417" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/LandingActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="113" column="33" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
+            <state relative-caret-position="639">
+              <caret line="160" column="67" selection-start-line="160" selection-start-column="67" selection-end-line="160" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4005#4398#0" expanded="true" />
+                <element signature="e#4397#4398#0" expanded="true" />
+                <element signature="e#4497#4907#0" expanded="true" />
+                <element signature="e#4906#4907#0" expanded="true" />
+                <element signature="method#showLandingData#0;class#LandingActivity#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+            <state relative-caret-position="86">
+              <caret line="6" column="36" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="36" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
@@ -144,7 +123,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/project/mausam/start/SettingsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="592">
-              <caret line="77" column="22" lean-forward="true" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
+              <caret line="77" column="22" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
               <folding>
                 <element signature="method#snackBar#0;class#GetStartedActivity#0" />
               </folding>
@@ -166,24 +145,34 @@
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/project/mausam/settings/SettingMenuActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
-              <caret line="74" column="22" lean-forward="true" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+            <state relative-caret-position="360">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
               <folding>
                 <element signature="e#770#771#0" expanded="true" />
                 <element signature="e#823#824#0" expanded="true" />
-                <element signature="e#897#925#0" expanded="true" />
-                <element signature="e#1324#1341#0" expanded="true" />
-                <element signature="e#1354#1378#0" expanded="true" />
-                <element signature="e#1423#1435#0" expanded="true" />
-                <element signature="e#1437#1774#0" expanded="true" />
-                <element signature="e#1773#1774#0" expanded="true" />
-                <element signature="e#1794#1805#0" expanded="true" />
-                <element signature="e#1807#2028#0" expanded="true" />
-                <element signature="e#2027#2028#0" expanded="true" />
+                <element signature="e#1025#1053#0" expanded="true" />
+                <element signature="e#1319#1345#0" expanded="true" />
+                <element signature="e#1744#1761#0" expanded="true" />
+                <element signature="e#1774#1798#0" expanded="true" />
+                <element signature="e#1843#1855#0" expanded="true" />
+                <element signature="e#1857#2196#0" expanded="true" />
+                <element signature="e#2195#2196#0" expanded="true" />
+                <element signature="e#2216#2227#0" expanded="true" />
+                <element signature="e#2229#2450#0" expanded="true" />
+                <element signature="e#2449#2450#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -266,9 +255,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/project/mausam/start/SettingsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/LandingActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/project/mausam/settings/SettingMenuActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/LandingActivity.java" />
       </list>
     </option>
   </component>
@@ -370,7 +359,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="con&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/layout/content_main.xml&#10;sETT&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/settings/SettingActivity.java&#10;adap&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/landing/view/WeatherAdapterTomorrow.java&#10;api&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/landing/model/WeatherApi.java&#10;par&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/landing/model/WeatherParser.java&#10;CONTE&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/layout/content_main.xml&#10;cOLO&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/values/colors.xml&#10;parse&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/landing/model/WeatherParser.java&#10;colo&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/values/colors.xml&#10;cON&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/layout/content_main.xml&#10;gE&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/start/GetStartedActivity.java&#10;gET&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/start/GetStartedActivity.java&#10;col&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/values/colors.xml&#10;Ma&#9;PSI&#9;JAVA://com.project.mausam.MainActivity" />
+    <property name="SearchEverywhereHistoryKey" value="CON&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/layout/content_main.xml&#10;sT&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/values/strings.xml&#10;con&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/layout/content_main.xml&#10;sETT&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/settings/SettingActivity.java&#10;adap&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/landing/view/WeatherAdapterTomorrow.java&#10;api&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/landing/model/WeatherApi.java&#10;par&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/landing/model/WeatherParser.java&#10;CONTE&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/layout/content_main.xml&#10;cOLO&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/values/colors.xml&#10;parse&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/landing/model/WeatherParser.java&#10;colo&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/values/colors.xml&#10;cON&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/layout/content_main.xml&#10;gE&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/start/GetStartedActivity.java&#10;gET&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/java/com/project/mausam/start/GetStartedActivity.java&#10;col&#9;FILE&#9;file:///Users/ashraf/Documents/mausam/app/src/main/res/values/colors.xml&#10;Ma&#9;PSI&#9;JAVA://com.project.mausam.MainActivity" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="b1172a0d" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -692,13 +681,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -778,20 +760,40 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/project/mausam/start/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+        <state relative-caret-position="592">
+          <caret line="77" column="22" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
+          <folding>
+            <element signature="method#snackBar#0;class#GetStartedActivity#0" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/LandingActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="113" column="33" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
+        <state relative-caret-position="120">
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/project/mausam/settings/SettingMenuActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#1025#1053#0" expanded="true" />
+            <element signature="e#1319#1345#0" expanded="true" />
+            <element signature="e#1744#1761#0" expanded="true" />
+            <element signature="e#1774#1798#0" expanded="true" />
+            <element signature="e#1843#1855#0" expanded="true" />
+            <element signature="e#1857#2196#0" expanded="true" />
+            <element signature="e#2195#2196#0" expanded="true" />
+            <element signature="e#2216#2227#0" expanded="true" />
+            <element signature="e#2229#2450#0" expanded="true" />
+            <element signature="e#2449#2450#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -804,32 +806,25 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/project/mausam/start/SettingsActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="77" column="22" lean-forward="true" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
-          <folding>
-            <element signature="method#snackBar#0;class#GetStartedActivity#0" />
-          </folding>
+        <state relative-caret-position="86">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="36" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/project/mausam/settings/SettingMenuActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/project/mausam/landing/view/LandingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="74" column="22" lean-forward="true" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+        <state relative-caret-position="639">
+          <caret line="160" column="67" selection-start-line="160" selection-start-column="67" selection-end-line="160" selection-end-column="67" />
           <folding>
-            <element signature="e#770#771#0" expanded="true" />
-            <element signature="e#823#824#0" expanded="true" />
-            <element signature="e#897#925#0" expanded="true" />
-            <element signature="e#1324#1341#0" expanded="true" />
-            <element signature="e#1354#1378#0" expanded="true" />
-            <element signature="e#1423#1435#0" expanded="true" />
-            <element signature="e#1437#1774#0" expanded="true" />
-            <element signature="e#1773#1774#0" expanded="true" />
-            <element signature="e#1794#1805#0" expanded="true" />
-            <element signature="e#1807#2028#0" expanded="true" />
-            <element signature="e#2027#2028#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4005#4398#0" expanded="true" />
+            <element signature="e#4397#4398#0" expanded="true" />
+            <element signature="e#4497#4907#0" expanded="true" />
+            <element signature="e#4906#4907#0" expanded="true" />
+            <element signature="method#showLandingData#0;class#LandingActivity#0" />
           </folding>
         </state>
       </provider>
