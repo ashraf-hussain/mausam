@@ -22,4 +22,7 @@
     <string name="no">No</string>
     <string name="change_zip_code">Are you sure you want to change Zip code ?</string>
     <string name="please_enter_zip_code">Please enter a zip code to get the weather forecast.</string>
+    <string name="celsius">Celsius</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="loading_data">Please Wait !</string>
 </resources>

@@ -9,5 +9,7 @@ public interface WeatherApi {
 
 
     @GET("forecast")
-    Call<ResponseBody> getLandingData(@Query("zip") String zipCode, @Query("APPID") String apikey);
+    Call<ResponseBody> getLandingData(@Query("zip") String zipCode,
+                                      @Query("APPID") String apikey,
+                                      @Query("units") String unit);
 }

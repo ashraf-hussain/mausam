@@ -43,7 +43,7 @@ public class WeatherParser {
 
             JSONObject main = data.getJSONObject("main");
 
-            weatherModel.setTempKf(main.getInt("humidity"));
+            weatherModel.setTempKf(main.getDouble("temp"));
 
 
             JSONArray weather = data.getJSONArray("weather");

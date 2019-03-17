@@ -2,22 +2,27 @@ package com.project.mausam.landing.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.mausam.R;
 import com.project.mausam.common.BaseActivity;
+import com.project.mausam.common.ConnectionDetector;
 import com.project.mausam.landing.model.WeatherModel;
 import com.project.mausam.landing.presenter.LandingImp;
 import com.project.mausam.landing.presenter.LandingPresenter;
@@ -29,6 +34,7 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LandingActivity extends BaseActivity
@@ -48,10 +54,22 @@ public class LandingActivity extends BaseActivity
     TextView tvCurrentStatus;
     @BindView(R.id.rv_weatherForecast)
     RecyclerView rvWeatherForecast;
+    @BindView(R.id.pull_to_refresh)
+    SwipeRefreshLayout pullToRefresh;
+    @BindView(R.id.cv_forecast_today)
+    CardView cardViewToday;
     @BindView(R.id.rv_weatherForecastTomorrow)
     RecyclerView rvWeatherForecastTomorrow;
     public static String todaysDate;
     SharedPreferences settings;
+    ConnectionDetector connectionDetector;
+    LandingPresenter landingPresenter;
+    @BindView(R.id.tv_current_unit)
+    TextView tvCurrentUnit;
+    @BindView(R.id.cv_settings)
+    CardView cvSettings;
+    @BindView(R.id.ll_pb)
+    LinearLayout llPb;
 
     @Override
     protected int getLayout() {
@@ -60,9 +78,11 @@ public class LandingActivity extends BaseActivity
 
     @Override
     protected void init() {
+        connectionDetector = new ConnectionDetector(this);
 
         settings = getSharedPreferences(SettingsActivity.MY_DATA, MODE_PRIVATE);
         String zipCodeDataCheck = settings.getString(SettingsActivity.zip, "");
+        String unit = settings.getString(SettingsActivity.unit, "");
 
 
         if (zipCodeDataCheck.equalsIgnoreCase("")) {
@@ -78,6 +98,7 @@ public class LandingActivity extends BaseActivity
             Date todayDate = new Date();
             todaysDate = currentDate.format(todayDate);
 
+
             RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 4);
             rvWeatherForecast.setLayoutManager(layoutManager);
             rvWeatherForecast.setHasFixedSize(true);
@@ -87,23 +108,73 @@ public class LandingActivity extends BaseActivity
             rvWeatherForecastTomorrow.setLayoutManager(layoutManagerTomorrow);
             rvWeatherForecastTomorrow.setHasFixedSize(true);
 
-            LandingPresenter landingPresenter = new LandingImp(this, this);
+            llPb.setVisibility(View.VISIBLE);
+            landingPresenter = new LandingImp(this, this);
             landingPresenter.loadWeatherData();
+            llPb.setVisibility(View.GONE);
+
+            pullToRefreshFunction();
+
+
+            if (unit.equalsIgnoreCase("metric")) {
+                tvCurrentUnit.setText("C");
+            } else if (unit.equalsIgnoreCase("imperial")) {
+                tvCurrentUnit.setText("F");
+            }
+
+        }
+
+    }
+
+    private void pullToRefreshFunction() {
+
+        if (!connectionDetector.isConnected()) {
+
+            pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    snackBar("No Internet Connection !");
+                    //llPb.setVisibility(View.GONE);
+                    pullToRefresh.setRefreshing(false);
+                }
+            });
+
+        } else {
+            // Pull to refresh
+            pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    snackBar("Data Refreshed !");
+                    landingPresenter.loadWeatherData();
+                    // tvOfflineMode.setVisibility(View.GONE);
+                    pullToRefresh.setRefreshing(false);
+                }
+            });
         }
     }
 
-
     @Override
     public void showLandingData(List<WeatherModel> weatherModelsList) {
+        //Rounding up double
+        int unitRoundUp = (int) Math.ceil(weatherModelsList.get(0).getTempKf());
 
+        if (unitRoundUp > 50) {
+            cvSettings.setCardBackgroundColor(Color.parseColor("#FF9506"));
+        }
         tvCurrentStatus.setText(weatherModelsList.get(0).getMain());
-        tvDegree.setText(weatherModelsList.get(0).getTempKf() + "");
+        tvDegree.setText(unitRoundUp + "");
         tvCity.setText(weatherModelsList.get(0).getCityName() + ","
                 + " " + weatherModelsList.get(0).getCountry());
 
+
         WeatherAdapter weatherAdapter = new WeatherAdapter(weatherModelsList);
         rvWeatherForecast.setAdapter(weatherAdapter);
+        if (!weatherAdapter.check) {
+            cardViewToday.setVisibility(View.GONE);
+        } else {
+            cardViewToday.setVisibility(View.VISIBLE);
 
+        }
 
         WeatherAdapterTomorrow weatherAdapterTomorrow = new WeatherAdapterTomorrow(weatherModelsList);
         rvWeatherForecastTomorrow.setAdapter(weatherAdapterTomorrow);
@@ -114,5 +185,26 @@ public class LandingActivity extends BaseActivity
     public void onViewClicked() {
         Intent intent = new Intent(this, SettingMenuActivity.class);
         startActivity(intent);
+    }
+
+
+    private void snackBar(String message) {
+        Snackbar snackbar = Snackbar
+                .make(pullToRefresh, message, Snackbar.LENGTH_SHORT);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBlack));
+        snackbar.show();
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (!connectionDetector.isConnected()) {
+            snackBar("No Internet Connection !");
+            landingPresenter.loadWeatherData();
+        }
     }
 }

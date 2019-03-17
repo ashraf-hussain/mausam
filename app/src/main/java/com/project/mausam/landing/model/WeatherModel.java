@@ -9,7 +9,7 @@ public class WeatherModel {
     private String dtTxt;
     @SerializedName("temp_kf")
     @Expose
-    private Integer tempKf;
+    private double tempKf;
 
     @SerializedName("main")
     @Expose
@@ -31,11 +31,11 @@ public class WeatherModel {
         this.dtTxt = dtTxt;
     }
 
-    public Integer getTempKf() {
+    public double getTempKf() {
         return tempKf;
     }
 
-    public void setTempKf(int tempKf) {
+    public void setTempKf(double tempKf) {
         this.tempKf = tempKf;
     }
 

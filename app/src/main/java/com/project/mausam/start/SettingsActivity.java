@@ -85,7 +85,6 @@ public class SettingsActivity extends BaseActivity {
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(zip, value);
-        // editor.putString("data", v);
         editor.commit();
 
     }

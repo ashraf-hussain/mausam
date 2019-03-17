@@ -40,6 +40,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     SimpleDateFormat in;
     SimpleDateFormat out;
     SimpleDateFormat outDate;
+    public boolean check;
 
 
     public WeatherAdapter(List<WeatherModel> musicModelList) {
@@ -51,6 +52,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.adapter_forecast, parent, false);
         context = view.getContext();
+
 
         //formatting as date and time
         inputPattern = "yyyy-MM-dd HH:mm:ss";
@@ -68,21 +70,23 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final WeatherModel weatherModel = weatherModelList.get(position);
+        int result = (int) Math.ceil(weatherModel.getTempKf());
+
         try {
             date = in.parse(weatherModel.getDtTxt());
             dateFormat = outDate.parse(weatherModel.getDtTxt());
             str = out.format(date);
             strDate = outDate.format(dateFormat);
-
+            check = LandingActivity.todaysDate.equals(strDate);
 
             if (LandingActivity.todaysDate.equals(strDate)) {
-                Log.d( "today",LandingActivity.todaysDate);
-                Log.d( "date",strDate);
+                Log.d("today", LandingActivity.todaysDate);
+                Log.d("date", strDate);
                 holder.llForecast.setVisibility(View.VISIBLE);
 
-                holder.tvForecastTemp.setText(weatherModel.getTempKf() + " ");
+                holder.tvForecastTemp.setText(result + " ");
                 holder.tvForecastTime.setText(str);
-                if (weatherModel.getMain().equalsIgnoreCase("clear sky")) {
+                if (result > 50) {
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_warm);
                     holder.tvForecastTemp.setTextColor(Color.parseColor("#FF9506"));
                     holder.tvForecastTime.setTextColor(Color.parseColor("#FF9506"));
@@ -94,22 +98,33 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
                     holder.tvForecastDegree.setTextColor(Color.parseColor("#03A9F5"));
                 } else if (weatherModel.getMain().equalsIgnoreCase("light rain")) {
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_rain);
-                } else if (weatherModel.getMain().equalsIgnoreCase("broken clouds")) {
+                } else if (weatherModel.getMain().equalsIgnoreCase("broken clouds")
+                        || weatherModel.getMain().equalsIgnoreCase("few clouds")) {
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_partly_cloudy);
                     holder.tvForecastTemp.setTextColor(Color.parseColor("#000000"));
                     holder.tvForecastTime.setTextColor(Color.parseColor("#000000"));
                     holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
-                } else if (weatherModel.getMain().equalsIgnoreCase("few clouds")) {
+                } else if (weatherModel.getMain().equalsIgnoreCase("clear sky")) {
                     holder.tvForecastTemp.setTextColor(Color.parseColor("#000000"));
                     holder.tvForecastTime.setTextColor(Color.parseColor("#000000"));
                     holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_sun);
+                } else if (result > 30) {
+                    holder.tvForecastTemp.setTextColor(Color.parseColor("#000000"));
+                    holder.tvForecastTime.setTextColor(Color.parseColor("#000000"));
+                    holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
+                    holder.ivForecastPic.setBackgroundResource(R.drawable.ic_sun);
+                } else {
+                    holder.ivForecastPic.setBackgroundResource(R.drawable.ic_partly_cloudy);
+                    holder.tvForecastTemp.setTextColor(Color.parseColor("#000000"));
+                    holder.tvForecastTime.setTextColor(Color.parseColor("#000000"));
+                    holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
                 }
 
 
-            }else {
+            } else {
                 holder.llForecast.setVisibility(View.GONE);
-                Log.d( "date","no");
+                Log.d("date", "no");
             }
 
         } catch (Exception e) {

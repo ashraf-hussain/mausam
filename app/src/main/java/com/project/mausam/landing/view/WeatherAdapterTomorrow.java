@@ -79,11 +79,12 @@ public class WeatherAdapterTomorrow extends RecyclerView.Adapter<WeatherAdapterT
             } else {
                 Log.d("tomo", "no");
 
+                int result = (int) Math.ceil(weatherModel.getTempKf());
                 holder.llForecast.setVisibility(View.VISIBLE);
-
-                holder.tvForecastTemp.setText(weatherModel.getTempKf() + " ");
+                holder.tvForecastTemp.setText(result+"");
                 holder.tvForecastTime.setText(str);
-                if (weatherModel.getMain().equalsIgnoreCase("clear sky")) {
+
+                if (result > 50) {
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_warm);
                     holder.tvForecastTemp.setTextColor(Color.parseColor("#FF9506"));
                     holder.tvForecastTime.setTextColor(Color.parseColor("#FF9506"));
@@ -95,16 +96,27 @@ public class WeatherAdapterTomorrow extends RecyclerView.Adapter<WeatherAdapterT
                     holder.tvForecastDegree.setTextColor(Color.parseColor("#03A9F5"));
                 } else if (weatherModel.getMain().equalsIgnoreCase("light rain")) {
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_rain);
-                } else if (weatherModel.getMain().equalsIgnoreCase("broken clouds")) {
+                } else if (weatherModel.getMain().equalsIgnoreCase("broken clouds")
+                        || weatherModel.getMain().equalsIgnoreCase("few clouds")) {
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_partly_cloudy);
                     holder.tvForecastTemp.setTextColor(Color.parseColor("#000000"));
                     holder.tvForecastTime.setTextColor(Color.parseColor("#000000"));
                     holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
-                } else if (weatherModel.getMain().equalsIgnoreCase("few clouds")) {
+                } else if (weatherModel.getMain().equalsIgnoreCase("clear sky")) {
                     holder.tvForecastTemp.setTextColor(Color.parseColor("#000000"));
                     holder.tvForecastTime.setTextColor(Color.parseColor("#000000"));
                     holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_sun);
+                } else if (result > 30) {
+                    holder.tvForecastTemp.setTextColor(Color.parseColor("#000000"));
+                    holder.tvForecastTime.setTextColor(Color.parseColor("#000000"));
+                    holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
+                    holder.ivForecastPic.setBackgroundResource(R.drawable.ic_sun);
+                } else {
+                    holder.ivForecastPic.setBackgroundResource(R.drawable.ic_partly_cloudy);
+                    holder.tvForecastTemp.setTextColor(Color.parseColor("#000000"));
+                    holder.tvForecastTime.setTextColor(Color.parseColor("#000000"));
+                    holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
                 }
             }
 
