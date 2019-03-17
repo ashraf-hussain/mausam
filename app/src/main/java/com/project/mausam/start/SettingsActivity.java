@@ -8,6 +8,8 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,18 +22,16 @@ import com.project.mausam.landing.view.LandingActivity;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class GetStartedActivity extends BaseActivity {
+public class SettingsActivity extends BaseActivity {
     @BindView(R.id.et_zip_code)
-    TextInputEditText etZipCode;
+    EditText etZipCode;
     SharedPreferences sharedPreferences;
     ConnectionDetector connectionDetector;
     String zipCodeData;
-    String unitData;
     @BindView(R.id.ll_main)
     LinearLayout llMain;
     @BindView(R.id.tv_offline)
     TextView tvOffline;
-
 
     @Override
     protected int getLayout() {
@@ -44,13 +44,15 @@ public class GetStartedActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        this.getSupportActionBar().hide();
+//        this.getSupportActionBar().hide();
         connectionDetector = new ConnectionDetector(this);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(etZipCode, InputMethodManager.SHOW_IMPLICIT);
         zipCodeData = etZipCode.getText().toString();
 
     }
 
-    @OnClick({R.id.btn_save, R.id.tb_unit})
+    @OnClick({R.id.btn_save})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_save:
@@ -72,9 +74,6 @@ public class GetStartedActivity extends BaseActivity {
                     startActivity(intent);
                     finish();
                 }
-
-                break;
-            case R.id.tb_unit:
 
                 break;
         }

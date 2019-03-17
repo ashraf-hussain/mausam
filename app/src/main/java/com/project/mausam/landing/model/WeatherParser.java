@@ -1,5 +1,6 @@
 package com.project.mausam.landing.model;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.util.Log;
 
@@ -38,13 +39,11 @@ public class WeatherParser {
             JSONObject data = list.getJSONObject(i);
 
             weatherModel.setDtTxt(data.getString(("dt_txt")));
-            Log.d("time: ", data.getString("dt_txt"));
 
 
             JSONObject main = data.getJSONObject("main");
 
-                weatherModel.setTempKf(main.getInt("humidity"));
-                Log.d("atmosphere: ", String.valueOf(main.getInt("humidity")));
+            weatherModel.setTempKf(main.getInt("humidity"));
 
 
             JSONArray weather = data.getJSONArray("weather");
@@ -53,10 +52,13 @@ public class WeatherParser {
                 JSONObject mainobj = weather.getJSONObject(imain);
 
                 weatherModel.setMain(mainobj.getString("description"));
-                Log.d("main: ", String.valueOf(mainobj.getString("main")));
 
             }
 
+            JSONObject country = jsonObject.getJSONObject("city");
+
+            weatherModel.setCountry(country.getString("country"));
+            weatherModel.setCityName(country.getString("name"));
             weatherModelArrayList.add(weatherModel);
 
         }
