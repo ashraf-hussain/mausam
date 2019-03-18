@@ -33,34 +33,38 @@ public class WeatherParser {
         JSONObject jsonObject = new JSONObject(result);
 
         JSONArray list = jsonObject.getJSONArray("list");
-        for (int i = 0; i < list.length(); i++) {
-            weatherModel = new WeatherModel();
+        try {
+            for (int i = 0; i < list.length(); i++) {
+                weatherModel = new WeatherModel();
 
-            JSONObject data = list.getJSONObject(i);
+                JSONObject data = list.getJSONObject(i);
 
-            weatherModel.setDtTxt(data.getString(("dt_txt")));
-
-
-            JSONObject main = data.getJSONObject("main");
-
-            weatherModel.setTempKf(main.getDouble("temp"));
+                weatherModel.setDtTxt(data.getString(("dt_txt")));
 
 
-            JSONArray weather = data.getJSONArray("weather");
-            for (int imain = 0; imain < weather.length(); imain++) {
+                JSONObject main = data.getJSONObject("main");
 
-                JSONObject mainobj = weather.getJSONObject(imain);
+                weatherModel.setTempKf(main.getDouble("temp"));
 
-                weatherModel.setMain(mainobj.getString("description"));
+
+                JSONArray weather = data.getJSONArray("weather");
+                for (int imain = 0; imain < weather.length(); imain++) {
+
+                    JSONObject mainobj = weather.getJSONObject(imain);
+
+                    weatherModel.setMain(mainobj.getString("description"));
+
+                }
+
+                JSONObject country = jsonObject.getJSONObject("city");
+
+                weatherModel.setCountry(country.getString("country"));
+                weatherModel.setCityName(country.getString("name"));
+                weatherModelArrayList.add(weatherModel);
 
             }
-
-            JSONObject country = jsonObject.getJSONObject("city");
-
-            weatherModel.setCountry(country.getString("country"));
-            weatherModel.setCityName(country.getString("name"));
-            weatherModelArrayList.add(weatherModel);
-
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
 

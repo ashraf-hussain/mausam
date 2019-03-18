@@ -99,4 +99,9 @@ public class SettingsActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        onBackPressed();
+    }
 }

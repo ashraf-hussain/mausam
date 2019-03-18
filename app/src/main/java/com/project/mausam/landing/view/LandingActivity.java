@@ -108,10 +108,8 @@ public class LandingActivity extends BaseActivity
             rvWeatherForecastTomorrow.setLayoutManager(layoutManagerTomorrow);
             rvWeatherForecastTomorrow.setHasFixedSize(true);
 
-            llPb.setVisibility(View.VISIBLE);
             landingPresenter = new LandingImp(this, this);
             landingPresenter.loadWeatherData();
-            llPb.setVisibility(View.GONE);
 
             pullToRefreshFunction();
 
@@ -155,6 +153,8 @@ public class LandingActivity extends BaseActivity
 
     @Override
     public void showLandingData(List<WeatherModel> weatherModelsList) {
+        llPb.setVisibility(View.VISIBLE);
+
         //Rounding up double
         int unitRoundUp = (int) Math.ceil(weatherModelsList.get(0).getTempKf());
 
@@ -178,6 +178,8 @@ public class LandingActivity extends BaseActivity
 
         WeatherAdapterTomorrow weatherAdapterTomorrow = new WeatherAdapterTomorrow(weatherModelsList);
         rvWeatherForecastTomorrow.setAdapter(weatherAdapterTomorrow);
+        llPb.setVisibility(View.GONE);
+
     }
 
 
@@ -185,6 +187,7 @@ public class LandingActivity extends BaseActivity
     public void onViewClicked() {
         Intent intent = new Intent(this, SettingMenuActivity.class);
         startActivity(intent);
+        finish();
     }
 
 
@@ -206,5 +209,12 @@ public class LandingActivity extends BaseActivity
             snackBar("No Internet Connection !");
             landingPresenter.loadWeatherData();
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

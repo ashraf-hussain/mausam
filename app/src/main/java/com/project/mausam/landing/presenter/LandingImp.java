@@ -3,6 +3,7 @@ package com.project.mausam.landing.presenter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.project.mausam.common.AppConstant;
 import com.project.mausam.common.SetupRetrofit;
@@ -55,14 +56,19 @@ public class LandingImp implements LandingPresenter {
 
                 Log.d("onResponse: ", String.valueOf(response.code()));
                 try {
-                    WeatherParser weatherParser = new WeatherParser(response.body().string());
-                    Log.d("onResponseUrl: ", String.valueOf(response.raw().request().url()));
+                    WeatherParser weatherParser = null;
+                    if (response.body()!=null) {
+                        weatherParser = new WeatherParser(response.body().string());
+                        weatherParser.weatherDataParse();
 
-
-
-                    weatherParser.weatherDataParse();
-
-                    view.showLandingData(weatherParser.getWeatherModelArrayList());
+                        view.showLandingData(weatherParser.getWeatherModelArrayList());
+                    }else{
+                        Toast.makeText(context,
+                                "Sorry, city out of US " +
+                                        "which is not available right now," +
+                                " please enter zip code inside US.", Toast.LENGTH_SHORT).show();
+                    }
+                    // Log.d("onResponseUrl: ", String.valueOf(response.raw().request().url()));
 
                 } catch (IOException e) {
                     e.printStackTrace();
