@@ -118,6 +118,8 @@ public class SettingMenuActivity extends BaseActivity {
     }
 
 
+
+
     void save(String value) {
         sharedPreferences = getSharedPreferences(MY_DATA,
                 Context.MODE_PRIVATE);
