@@ -61,9 +61,9 @@ public class SettingMenuActivity extends BaseActivity {
         tvZipCode.setText(zipCodeDataCheck);
 
         if (unitCheck.equalsIgnoreCase("metric")) {
-            tvUnit.setText(getString(R.string.degree) + R.string.celsius);
+            tvUnit.setText(getString(R.string.degree) + "Celsius");
         } else {
-            tvUnit.setText(getString(R.string.degree) + R.string.fahrenheit);
+            tvUnit.setText(getString(R.string.degree) + "Fahrenheit");
         }
 
 
@@ -126,4 +126,10 @@ public class SettingMenuActivity extends BaseActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        onBackPressed();
+    }
 }
