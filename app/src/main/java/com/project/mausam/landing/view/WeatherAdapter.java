@@ -76,6 +76,8 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
             str = out.format(date);
             strDate = outDate.format(dateFormat);
 
+           check = LandingActivity.todaysDate.equals(strDate);
+
             if (LandingActivity.todaysDate.equals(strDate)) {
                 Log.d("today", "yes");
 

@@ -92,8 +92,9 @@ public class SettingMenuActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.toolbar:
-                onBackPressed();
-                break;
+                Intent intent = new Intent(getApplication(), LandingActivity.class);
+                startActivity(intent);
+                finish();                break;
             case R.id.ll_zip:
 
                 final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -130,6 +131,7 @@ public class SettingMenuActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        onBackPressed();
-    }
+        Intent intent = new Intent(getApplication(), LandingActivity.class);
+        startActivity(intent);
+        finish();    }
 }

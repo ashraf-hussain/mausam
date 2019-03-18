@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -64,6 +63,8 @@ public class LandingActivity extends BaseActivity
     TextView tvRefresh;
     @BindView(R.id.pull_to_refresh)
     ScrollView pullToRefresh;
+    @BindView(R.id.no_data)
+    TextView noData;
 
     @Override
     protected int getLayout() {
@@ -135,10 +136,11 @@ public class LandingActivity extends BaseActivity
         WeatherAdapter weatherAdapter = new WeatherAdapter(weatherModelsList);
         rvWeatherForecast.setAdapter(weatherAdapter);
 //        if (!weatherAdapter.check) {
-//            cardViewToday.setVisibility(View.GONE);
-//        } else {
-//            cardViewToday.setVisibility(View.VISIBLE);
+//           // noData.setVisibility(View.VISIBLE);
 //
+//            Log.d("showLandingData: ", String.valueOf(weatherAdapter.check));
+//        } else {
+//           // noData.setVisibility(View.GONE);
 //        }
 
         WeatherAdapterTomorrow weatherAdapterTomorrow = new WeatherAdapterTomorrow(weatherModelsList);
@@ -188,7 +190,6 @@ public class LandingActivity extends BaseActivity
 
                 if (!connectionDetector.isConnected()) {
                     snackBar("No Internet Connection !");
-
 
 
                 } else {

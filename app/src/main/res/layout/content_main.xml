@@ -137,6 +137,18 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
                     android:background="@color/colorView" />
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/no_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="No forecast for today."
+                    android:textColor="@color/colorWarm"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
 
                 <android.support.v7.widget.RecyclerView
