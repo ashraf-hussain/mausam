@@ -4,19 +4,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,12 +38,6 @@ import butterknife.OnClick;
 public class LandingActivity extends BaseActivity
         implements LandingView {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.nav_view)
-    NavigationView navView;
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
     @BindView(R.id.tv_city)
     TextView tvCity;
     @BindView(R.id.tv_degree)
@@ -54,8 +46,6 @@ public class LandingActivity extends BaseActivity
     TextView tvCurrentStatus;
     @BindView(R.id.rv_weatherForecast)
     RecyclerView rvWeatherForecast;
-    @BindView(R.id.pull_to_refresh)
-    SwipeRefreshLayout pullToRefresh;
     @BindView(R.id.cv_forecast_today)
     CardView cardViewToday;
     @BindView(R.id.rv_weatherForecastTomorrow)
@@ -70,6 +60,10 @@ public class LandingActivity extends BaseActivity
     CardView cvSettings;
     @BindView(R.id.ll_pb)
     LinearLayout llPb;
+    @BindView(R.id.tv_refresh)
+    TextView tvRefresh;
+    @BindView(R.id.pull_to_refresh)
+    ScrollView pullToRefresh;
 
     @Override
     protected int getLayout() {
@@ -100,19 +94,16 @@ public class LandingActivity extends BaseActivity
 
 
             RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 4);
-            rvWeatherForecast.setLayoutManager(layoutManager);
-            rvWeatherForecast.setHasFixedSize(true);
+            rvWeatherForecastTomorrow.setLayoutManager(layoutManager);
+            rvWeatherForecastTomorrow.setHasFixedSize(true);
 
             LinearLayoutManager layoutManagerTomorrow = new LinearLayoutManager(this,
                     LinearLayoutManager.HORIZONTAL, false);
-            rvWeatherForecastTomorrow.setLayoutManager(layoutManagerTomorrow);
-            rvWeatherForecastTomorrow.setHasFixedSize(true);
+            rvWeatherForecast.setLayoutManager(layoutManagerTomorrow);
+            rvWeatherForecast.setHasFixedSize(true);
 
             landingPresenter = new LandingImp(this, this);
             landingPresenter.loadWeatherData();
-
-            pullToRefreshFunction();
-
 
             if (unit.equalsIgnoreCase("metric")) {
                 tvCurrentUnit.setText("C");
@@ -124,32 +115,6 @@ public class LandingActivity extends BaseActivity
 
     }
 
-    private void pullToRefreshFunction() {
-
-        if (!connectionDetector.isConnected()) {
-
-            pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    snackBar("No Internet Connection !");
-                    //llPb.setVisibility(View.GONE);
-                    pullToRefresh.setRefreshing(false);
-                }
-            });
-
-        } else {
-            // Pull to refresh
-            pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    snackBar("Data Refreshed !");
-                    landingPresenter.loadWeatherData();
-                    // tvOfflineMode.setVisibility(View.GONE);
-                    pullToRefresh.setRefreshing(false);
-                }
-            });
-        }
-    }
 
     @Override
     public void showLandingData(List<WeatherModel> weatherModelsList) {
@@ -169,25 +134,17 @@ public class LandingActivity extends BaseActivity
 
         WeatherAdapter weatherAdapter = new WeatherAdapter(weatherModelsList);
         rvWeatherForecast.setAdapter(weatherAdapter);
-        if (!weatherAdapter.check) {
-            cardViewToday.setVisibility(View.GONE);
-        } else {
-            cardViewToday.setVisibility(View.VISIBLE);
-
-        }
+//        if (!weatherAdapter.check) {
+//            cardViewToday.setVisibility(View.GONE);
+//        } else {
+//            cardViewToday.setVisibility(View.VISIBLE);
+//
+//        }
 
         WeatherAdapterTomorrow weatherAdapterTomorrow = new WeatherAdapterTomorrow(weatherModelsList);
         rvWeatherForecastTomorrow.setAdapter(weatherAdapterTomorrow);
         llPb.setVisibility(View.GONE);
 
-    }
-
-
-    @OnClick(R.id.cv_settings)
-    public void onViewClicked() {
-        Intent intent = new Intent(this, SettingMenuActivity.class);
-        startActivity(intent);
-        finish();
     }
 
 
@@ -217,4 +174,30 @@ public class LandingActivity extends BaseActivity
         super.onBackPressed();
         finish();
     }
+
+
+    @OnClick({R.id.tv_city, R.id.tv_refresh})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_city:
+                Intent intent = new Intent(this, SettingMenuActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.tv_refresh:
+
+                if (!connectionDetector.isConnected()) {
+                    snackBar("No Internet Connection !");
+
+
+
+                } else {
+                    landingPresenter.loadWeatherData();
+                    snackBar("Data Refreshed.");
+
+                }
+                break;
+        }
+    }
+
 }
