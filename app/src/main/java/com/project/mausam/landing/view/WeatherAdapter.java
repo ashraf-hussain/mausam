@@ -70,22 +70,20 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final WeatherModel weatherModel = weatherModelList.get(position);
-        int result = (int) Math.ceil(weatherModel.getTempKf());
-
         try {
             date = in.parse(weatherModel.getDtTxt());
             dateFormat = outDate.parse(weatherModel.getDtTxt());
             str = out.format(date);
             strDate = outDate.format(dateFormat);
-            check = LandingActivity.todaysDate.equals(strDate);
 
             if (LandingActivity.todaysDate.equals(strDate)) {
-                Log.d("today", LandingActivity.todaysDate);
-                Log.d("date", strDate);
-                holder.llForecast.setVisibility(View.VISIBLE);
+                Log.d("today", "yes");
 
-                holder.tvForecastTemp.setText(result + " ");
+                int result = (int) Math.ceil(weatherModel.getTempKf());
+                holder.llForecast.setVisibility(View.VISIBLE);
+                holder.tvForecastTemp.setText(result+"");
                 holder.tvForecastTime.setText(str);
+
                 if (result > 50) {
                     holder.ivForecastPic.setBackgroundResource(R.drawable.ic_warm);
                     holder.tvForecastTemp.setTextColor(Color.parseColor("#FF9506"));
@@ -121,16 +119,15 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
                     holder.tvForecastDegree.setTextColor(Color.parseColor("#000000"));
                 }
 
-
             } else {
                 holder.llForecast.setVisibility(View.GONE);
-                Log.d("date", "no");
+                Log.d("today", "no");
+
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
+        }    }
 
 
     @Override
